@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #85CBE2;
+    color: white;
+}
+
+.container{
+    width: 100%;
+    margin-top: 2%;
+}
+
+.mainContainer{
+    display: flex;
+}
+
+.gameHeader{
+    width: 100%;
+    display: flex;
+}
+
+.gameTablero{
+    width: 100%;
+}
+
+
+.contentHeader{
+    display: flex;
+    justify-content: center;
+    /* border: solid white 2px; */
+    /* padding: 10px;
+    width: 100%; */
+    margin: 20px auto 20px auto;
+    border-radius: 10px;
+    border: solid 5px #C3E7F1;
+    width: 50%;
+    background-color: #3E88C9;
+}
+
+.contentTablero{
+    display: flex;
+    justify-content: center;
+    /* border: solid white 2px; */
+    padding: 10px;
+    color: white;
+    width: 42%;
+    flex-wrap: wrap;
+    margin: auto;
+    background-color: #3E88C9;
+    border-radius: 10px;
+    border: solid 5px #C3E7F1;
+}
+
+.contentOptions{
+    width: 40%;
+    display: flex;
+
+}
+
+.optionsItems{
+    margin-left: 20%;
+    border-radius: 10px;
+    border: solid 5px #C3E7F1;
+    width: 100%;
+    height: 98%;
+}
+
+.optionPair{
+    background-color: #84B6B7;
+    height: 20%;
+    text-align: center;
+    /* padding: 20px; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.optionInpair{
+    background-color: #85CEB7;
+    height: 20%;
+    text-align: center;
+    /* padding: 20px; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
