@@ -1,6 +1,6 @@
 import { IconLogo, IconLogoMobile, Menu, MenuItem, MenuItemLink, NavbarContainer, NavbarWrapper } from "./elements/Navbar-elements";
-import { DiReact } from "react-icons/di";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { DiReact,DiAngularSimple, } from "react-icons/di";
+import { FaBars, FaTimes,FaVuejs} from "react-icons/fa";
 import { useState } from "react";
 
 export const NavBar= ()=>{
@@ -37,14 +37,13 @@ export const NavBar= ()=>{
                     {/* <MenuItem  onClick={changeClick}>
                         <MenuItemLink>HOME</MenuItemLink>
                     </MenuItem> */}
-                    <MenuItem  onClick={changeClick}>
-                        <MenuItemLink>MEMORY</MenuItemLink>
-                    </MenuItem>
                     <MenuItem  onClick={() => changeClick('movies')}>
+                        <DiAngularSimple size={"2em"}/>
                         <MenuItemLink>MOVIES</MenuItemLink>
                     </MenuItem>
                     <MenuItem  onClick={() => changeClick('pokedex')}>
-                        <MenuItemLink>MOVIES</MenuItemLink>
+                        <FaVuejs size={"1.5em"}/>
+                        <MenuItemLink>POKEDEX</MenuItemLink>
                     </MenuItem>
                 </Menu>
             </NavbarWrapper>
