@@ -3422,6 +3422,11 @@
     "isobject" "^3.0.0"
     "static-extend" "^0.1.1"
 
+"classnames@^2.3.1":
+  "integrity" "sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA=="
+  "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.1.tgz"
+  "version" "2.3.1"
+
 "clean-css@^4.2.3":
   "integrity" "sha512-VcMWDN54ZN/DS+g58HYL5/n4Zrqe8vHJpGA8KdgUXFU4fuP/aHNw8eld9SyEIyabIMJX/0RaY/fplOo5hYLSFA=="
   "resolved" "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.3.tgz"
@@ -4351,6 +4356,13 @@
   dependencies:
     "domelementtype" "^2.0.1"
     "entities" "^2.0.0"
+
+"dom7@^3.0.0":
+  "integrity" "sha512-oNlcUdHsC4zb7Msx7JN3K0Nro1dzJ48knvBOnDPKJ2GV9wl1i5vydJZUSyOfrkKFDZEud/jBsTk92S/VGSAe/g=="
+  "resolved" "https://registry.npmjs.org/dom7/-/dom7-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "ssr-window" "^3.0.0-alpha.1"
 
 "domain-browser@^1.1.1":
   "integrity" "sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA=="
@@ -5320,6 +5332,23 @@
   dependencies:
     "map-cache" "^0.2.2"
 
+"framework7-react@^6.3.16":
+  "integrity" "sha512-ztGyirwcOtbTEuYt8zngGgPh+Y2i1NQFNCPqn3NFXuUkwq+WOFwevLfm/MJ7op9+5SrqaFCVGW3YfaAapDyZSQ=="
+  "resolved" "https://registry.npmjs.org/framework7-react/-/framework7-react-6.3.16.tgz"
+  "version" "6.3.16"
+
+"framework7@^6.3.16":
+  "integrity" "sha512-OuOnIQV5TfT8L2j4EHzzlIzmz5F4+IxoxOySEaolsyttvcsrn/pLBzZV8f3gemvLFbNj5tagQBimpH6v67NP6w=="
+  "resolved" "https://registry.npmjs.org/framework7/-/framework7-6.3.16.tgz"
+  "version" "6.3.16"
+  dependencies:
+    "dom7" "^3.0.0"
+    "htm" "^3.1.0"
+    "path-to-regexp" "^6.2.0"
+    "skeleton-elements" "^3.5.0"
+    "ssr-window" "^3.0.0"
+    "swiper" "^6.8.4"
+
 "fresh@0.5.2":
   "integrity" "sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac="
   "resolved" "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz"
@@ -5716,6 +5745,11 @@
   "integrity" "sha1-wc56MWjIxmFAM6S194d/OyJfnDg="
   "resolved" "https://registry.yarnpkg.com/hsla-regex/-/hsla-regex-1.0.0.tgz"
   "version" "1.0.0"
+
+"htm@^3.1.0":
+  "integrity" "sha512-L0s3Sid5r6YwrEvkig14SK3Emmc+kIjlfLhEGn2Vy3bk21JyDEes4MoDsbJk6luaPp8bugErnxPz86ZuAw6e5Q=="
+  "resolved" "https://registry.npmjs.org/htm/-/htm-3.1.0.tgz"
+  "version" "3.1.0"
 
 "html-comment-regex@^1.1.0":
   "integrity" "sha512-P+M65QY2JQ5Y0G9KKdlDpo0zK+/OHptU5AaBwUfAIDJZk1MYf32Frm84EcOytfJE0t5JvkAnKlmjsXDnWzCJmQ=="
@@ -8258,6 +8292,11 @@
   dependencies:
     "isarray" "0.0.1"
 
+"path-to-regexp@^6.2.0":
+  "integrity" "sha512-f66KywYG6+43afgE/8j/GoiNyygk/bnoCbps++3ErRKsIYkGGupyv07R2Ok5m9i67Iqc+T2g1eAUGUPzWhYTyg=="
+  "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-6.2.0.tgz"
+  "version" "6.2.0"
+
 "path-to-regexp@0.1.7":
   "integrity" "sha1-32BBeABfUi8V60SQ5yR6G/qmf4w="
   "resolved" "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz"
@@ -10334,6 +10373,11 @@
   "resolved" "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz"
   "version" "1.0.5"
 
+"skeleton-elements@^3.5.0":
+  "integrity" "sha512-KOU3wHGyCOtfMWLYF9wn2JzxM/l0Vu4miqqdoz9HeTfd1fwIsEePrcIrZ4+8wbg6yK82UPLLyH7fAZAwhQwZNw=="
+  "resolved" "https://registry.npmjs.org/skeleton-elements/-/skeleton-elements-3.5.0.tgz"
+  "version" "3.5.0"
+
 "slash@^3.0.0":
   "integrity" "sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q=="
   "resolved" "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz"
@@ -10548,6 +10592,11 @@
     "jsbn" "~0.1.0"
     "safer-buffer" "^2.0.2"
     "tweetnacl" "~0.14.0"
+
+"ssr-window@^3.0.0", "ssr-window@^3.0.0-alpha.1":
+  "integrity" "sha512-q+8UfWDg9Itrg0yWK7oe5p/XRCJpJF9OBtXfOPgSJl+u3Xd5KI328RUEvUqSMVM9CiQUEf1QdBzJMkYGErj9QA=="
+  "resolved" "https://registry.npmjs.org/ssr-window/-/ssr-window-3.0.0.tgz"
+  "version" "3.0.0"
 
 "ssri@^6.0.1":
   "integrity" "sha512-3Wge10hNcT1Kur4PDFwEieXSCMCJs/7WvSACcrMYrNp+b8kDL1/0wJch5Ni2WrtwEa2IO8OsVfeKIciKCDx/QA=="
@@ -10897,6 +10946,14 @@
   "integrity" "sha512-HWPsMlCvA+rJEn7BJH0ovTPr6S5YkxViIgK1YrA2Z3Y5Ghkfk7IOprgmYNi44HWIqN/xoXE73rG9+qG/MgD6Sw=="
   "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.1.2.tgz"
   "version" "11.1.2"
+
+"swiper@^6.8.4":
+  "integrity" "sha512-O+buF9Q+sMA0H7luMS8R59hCaJKlpo8PXhQ6ZYu6Rn2v9OsFd4d1jmrv14QvxtQpKAvL/ZiovEeANI/uDGet7g=="
+  "resolved" "https://registry.npmjs.org/swiper/-/swiper-6.8.4.tgz"
+  "version" "6.8.4"
+  dependencies:
+    "dom7" "^3.0.0"
+    "ssr-window" "^3.0.0"
 
 "symbol-tree@^3.2.4":
   "integrity" "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="

@@ -18,6 +18,14 @@ export const NavBar= ()=>{
                 window.location.href ='https://eager-kalam-ae52aa.netlify.app';
                 return '';
             }
+            case 'connectfour':{
+                window.location.href ='/connectfour';
+                return '';
+            }
+            case '/':{
+                window.location.href ='/';
+                return '';
+            }
             
             default: return '';
         }
@@ -37,6 +45,14 @@ export const NavBar= ()=>{
                     {/* <MenuItem  onClick={changeClick}>
                         <MenuItemLink>HOME</MenuItemLink>
                     </MenuItem> */}
+                    <MenuItem  onClick={() => changeClick('/')}>
+                        <DiReact size={"2em"}/>
+                        <MenuItemLink>MEMORY</MenuItemLink>
+                    </MenuItem>
+                    <MenuItem  onClick={() => changeClick('connectfour')}>
+                        <DiReact size={"2em"}/>
+                        <MenuItemLink>CONNECTFOUR</MenuItemLink>
+                    </MenuItem>
                     <MenuItem  onClick={() => changeClick('movies')}>
                         <DiAngularSimple size={"2em"}/>
                         <MenuItemLink>MOVIES</MenuItemLink>

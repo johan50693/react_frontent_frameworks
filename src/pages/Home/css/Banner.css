@@ -1,0 +1,28 @@
+
+
+.bg-Text{
+    z-index: 1;
+    color: white;
+}
+
+.container-Banner{
+    width: 100%;
+    height: 500px;
+    background-image: url('../../../assets/monitor.jpg');
+    background-size: cover;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-Banner:before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    opacity: 0.7;
+}
