@@ -5,7 +5,7 @@ import styles from "./Tile.module.css";
 
 export const Tile = ({id,chipType,onClick}) => {
 
-  const chipCssClass = classNames(styles.chip, chipType === "red" ? styles.red : styles.yellow);
+  const chipCssClass = classNames(styles.chip, chipType === "#ff010b" ? styles.red : styles.yellow);
 
   return (
     <div className={styles.tile} onClick={() => onClick(id)}>

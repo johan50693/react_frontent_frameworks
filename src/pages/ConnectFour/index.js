@@ -3,7 +3,26 @@ import styles from "./App.module.css";
 import { Board } from '../../components/Board';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateChipPosition } from '../../redux/actions/ConnectFourActions';
-import { Navbar } from 'framework7-react';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/system';
+import { BoxSC, CardSC, TitleSC } from '../../components/ConnectFourStyledComponent';
+
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  marginTop: "10px",
+}));
 
 export const ConnectFour = () => {
 
@@ -73,7 +92,7 @@ export const ConnectFour = () => {
       [lastEmptyTileId]: playerTurn
     };
     // Change player turn
-    const newPlayerTurn = playerTurn === "red" ? "yellow" : "red";
+    const newPlayerTurn = playerTurn === "#ff010b" ? "#ffff33": "#ff010b";
     // Calculate game status
     const gameStatus = calculateGameStatus(newPlayerTurn, newChipsPositions);
     // Save new state
@@ -114,17 +133,39 @@ export const ConnectFour = () => {
 
   return (
     <>
-
-    <div className={styles.app}>
-      {renderBoard()}
+    <Container maxWidth="lg">
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item xs={4}  sx={{  marginTop: "10px", 
+                                  padding: 0, 
+                                  height: "90vh",
+                                  display: "flex",
+                                  justifyContent: "center",
+                                  alignItems: "center",
+                                }}>
+          <CardSC>
+            <TitleSC>Turno del jugador:</TitleSC>
+            <BoxSC color={stateConnectFour.playerTurn}></BoxSC>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+              <Grid item xs={6} sx={{ marginTop: "10px"}}>
+                <BoxSC height={100} color={"#ff010b"}>0</BoxSC>  
+              </Grid>
+              <Grid item xs={6} sx={{ marginTop: "10px"}}>
+                <BoxSC height={100} color={"#ffff33"}>0</BoxSC>
+              </Grid>
+            </Grid>
+            <Button sx={{ width: "100%", marginTop: "10px"}} color="primary" variant="contained">Iniciar</Button>
+            <Button sx={{ width: "100%", marginTop: "10px"}} color="success" variant="contained">Reiniciar</Button>
+          </CardSC>
+        </Grid>
+        <Grid item xs={8} sx={{ marginTop: "10px"}}>
+                {renderBoard()}
+        </Grid>
+      </Grid>
+    </Container>
+    {/* <div className={styles.app}>
       {renderStatusMessage()}
-    </div>
+    </div> */}
     </>
   )
 }
-
-// ConnectFour.propTypes={
-//   column: PropTypes.number.isRequired,
-//   rows:  PropTypes.number.isRequired,
-// }
 

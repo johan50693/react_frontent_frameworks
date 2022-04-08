@@ -2,6 +2,10 @@ import { IconLogo, IconLogoMobile, Menu, MenuItem, MenuItemLink, NavbarContainer
 import { DiReact,DiAngularSimple, } from "react-icons/di";
 import { FaBars, FaTimes,FaVuejs} from "react-icons/fa";
 import { useState } from "react";
+import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export const NavBar= ()=>{
 
@@ -31,38 +35,20 @@ export const NavBar= ()=>{
         }
     }
     return (
-        <NavbarContainer>
-            <NavbarWrapper>
-                <IconLogo>
-                    <DiReact size={"3em"}/>
-                </IconLogo>
-                <IconLogoMobile onClick={changeClick}>
-                    { 
-                        click ? <FaTimes/>:<FaBars/>
-                    }
-                </IconLogoMobile>
-                <Menu click={click}>
-                    {/* <MenuItem  onClick={changeClick}>
-                        <MenuItemLink>HOME</MenuItemLink>
-                    </MenuItem> */}
-                    <MenuItem  onClick={() => changeClick('/')}>
-                        <DiReact size={"2em"}/>
-                        <MenuItemLink>MEMORY</MenuItemLink>
-                    </MenuItem>
-                    <MenuItem  onClick={() => changeClick('connectfour')}>
-                        <DiReact size={"2em"}/>
-                        <MenuItemLink>CONNECTFOUR</MenuItemLink>
-                    </MenuItem>
-                    <MenuItem  onClick={() => changeClick('movies')}>
-                        <DiAngularSimple size={"2em"}/>
-                        <MenuItemLink>MOVIES</MenuItemLink>
-                    </MenuItem>
-                    <MenuItem  onClick={() => changeClick('pokedex')}>
-                        <FaVuejs size={"1.5em"}/>
-                        <MenuItemLink>POKEDEX</MenuItemLink>
-                    </MenuItem>
-                </Menu>
-            </NavbarWrapper>
-        </NavbarContainer>
+        <>
+            <Box sx={{ 
+                    width: "100%",
+                    backgroundColor: 'primary' 
+                }}>
+                <BottomNavigation
+                showLabels
+                >
+                <BottomNavigationAction onClick={() => changeClick('/')} label="Memory" icon={<DiReact size={"2em"}/>} />
+                <BottomNavigationAction onClick={() => changeClick('connectfour')} label="Connectfour" icon={<DiReact size={"2em"}/>} />
+                <BottomNavigationAction onClick={() => changeClick('movies')} label="Movies" icon={<DiAngularSimple size={"2em"}/>} />
+                <BottomNavigationAction onClick={() => changeClick('pokedex')} label="Pokedex" icon={<FaVuejs size={"1.5em"}/>} />
+                </BottomNavigation>
+            </Box>
+        </>
     );
 }
