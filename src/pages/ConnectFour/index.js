@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from "./App.module.css";
 import { Board } from '../../components/Board';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateChipPosition } from '../../redux/actions/ConnectFourActions';
+import { continueGame, resetGame, updateChipPosition, updatePointWinner } from '../../redux/actions/ConnectFourActions';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
@@ -14,20 +14,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { BoxSC, CardSC, TitleSC } from '../../components/ConnectFourStyledComponent';
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  marginTop: "10px",
-}));
+import AlertDialog from '../../components/Modal';
 
 export const ConnectFour = () => {
 
   const stateConnectFour= useSelector(state => state.ConnectFour);
   const dispatch= useDispatch();
+  const [open, setOpen] = useState(false);
 
   const calculateGameStatus = (playerTurn, chipsPositions) => {
     const { colums, rows } = stateConnectFour;
@@ -47,7 +40,14 @@ export const ConnectFour = () => {
         }
         // If the count for a player is 4, that player won
         if (repetitionCountStatus.count === 4) {
-           return `Player ${repetitionCountStatus.playerChip} won!`;
+          const data={
+            red: (repetitionCountStatus.playerChip === "#ff010b") ? (stateConnectFour.red+1) : stateConnectFour.red,
+            yellow: (repetitionCountStatus.playerChip === "#ffff33") ? (stateConnectFour.yellow+1) : stateConnectFour.yellow,
+          };
+          dispatch(updatePointWinner(data));
+          handleClickOpen();
+          return true;
+          // return `Player ${repetitionCountStatus.playerChip} won!`;
         }
       }
     }
@@ -67,41 +67,50 @@ export const ConnectFour = () => {
         }
         // If the count for a player is 4, that player won
         if (repetitionCountStatus.count === 4) {
-          return `Player ${repetitionCountStatus.playerChip} won!`;
+          const data={
+            red: (repetitionCountStatus.playerChip === "#ff010b") ? (stateConnectFour.red+1) : stateConnectFour.red,
+            yellow: (repetitionCountStatus.playerChip === "#ffff33") ? (stateConnectFour.yellow+1) : stateConnectFour.yellow,
+          };
+          dispatch(updatePointWinner(data));
+          handleClickOpen();
+          return true;
+          // return `Player ${repetitionCountStatus.playerChip} won!`;
         }
       }
     }
     // TODO: Check four in a row diagonally
-    
-    return `It's ${playerTurn}'s turn`;
+    return false;
+    // return `It's ${playerTurn}'s turn`;
   };
 
   const handleTileClick = (tileId) => {
-    const { chipsPositions, playerTurn } = stateConnectFour;
-    // Get the last empty tile of the column
-    const column = parseInt(tileId.split(":")[1]);
-    // console.log(column);
-    let lastEmptyTileId = getLastEmptyTile(column);
-    // If there is no empty tile in the column, do nothing
-    if (!lastEmptyTileId) {
-      return;
+    const { chipsPositions, playerTurn, gameStatus } = stateConnectFour;
+    if(!gameStatus){
+      // Get the last empty tile of the column
+      const column = parseInt(tileId.split(":")[1]);
+      // console.log(column);
+      let lastEmptyTileId = getLastEmptyTile(column);
+      // If there is no empty tile in the column, do nothing
+      if (!lastEmptyTileId) {
+        return;
+      }
+      // Add chip to empty tile
+      const newChipsPositions = {
+        ...chipsPositions,
+        [lastEmptyTileId]: playerTurn
+      };
+      // Change player turn
+      const newPlayerTurn = playerTurn === "#ff010b" ? "#ffff33": "#ff010b";
+      // Calculate game status
+      const gameStatusCheck = calculateGameStatus(newPlayerTurn, newChipsPositions);
+      // Save new state
+      const data={
+        chipsPositions: newChipsPositions,
+        playerTurn: newPlayerTurn,
+        gameStatus: gameStatusCheck
+      };
+      dispatch(updateChipPosition(data));
     }
-    // Add chip to empty tile
-    const newChipsPositions = {
-      ...chipsPositions,
-      [lastEmptyTileId]: playerTurn
-    };
-    // Change player turn
-    const newPlayerTurn = playerTurn === "#ff010b" ? "#ffff33": "#ff010b";
-    // Calculate game status
-    const gameStatus = calculateGameStatus(newPlayerTurn, newChipsPositions);
-    // Save new state
-    const data={
-      chipsPositions: newChipsPositions,
-      playerTurn: newPlayerTurn,
-      gameStatus: gameStatus
-    };
-    dispatch(updateChipPosition(data));
   };
 
   const getLastEmptyTile = (column) => {
@@ -127,13 +136,26 @@ export const ConnectFour = () => {
     );
   }
 
-  const renderStatusMessage = () => {
-    return <div className={styles.statusMessage}>{stateConnectFour.gameStatus}</div>;
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleContinue = () => {
+    dispatch(continueGame());
+  }
+  
+  const handleReset = () => {
+    dispatch(resetGame());
   }
 
   return (
     <>
     <Container maxWidth="lg">
+      <AlertDialog open={open} handleClose={handleClose} />
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid item xs={4}  sx={{  marginTop: "10px", 
                                   padding: 0, 
@@ -147,14 +169,14 @@ export const ConnectFour = () => {
             <BoxSC color={stateConnectFour.playerTurn}></BoxSC>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <Grid item xs={6} sx={{ marginTop: "10px"}}>
-                <BoxSC height={100} color={"#ff010b"}>0</BoxSC>  
+                <BoxSC height={100} color={"#ff010b"}>{stateConnectFour.red}</BoxSC>  
               </Grid>
               <Grid item xs={6} sx={{ marginTop: "10px"}}>
-                <BoxSC height={100} color={"#ffff33"}>0</BoxSC>
+                <BoxSC height={100} color={"#ffff33"}>{stateConnectFour.yellow}</BoxSC>
               </Grid>
             </Grid>
-            <Button sx={{ width: "100%", marginTop: "10px"}} color="primary" variant="contained">Iniciar</Button>
-            <Button sx={{ width: "100%", marginTop: "10px"}} color="success" variant="contained">Reiniciar</Button>
+            <Button onClick={handleContinue} sx={{ width: "100%", marginTop: "10px"}} color="primary" variant="contained">Continuar</Button>
+            <Button onClick={handleReset} sx={{ width: "100%", marginTop: "10px"}} color="success" variant="contained">Reiniciar</Button>
           </CardSC>
         </Grid>
         <Grid item xs={8} sx={{ marginTop: "10px"}}>
